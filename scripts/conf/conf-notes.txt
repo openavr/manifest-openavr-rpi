@@ -1,0 +1,12 @@
+################################
+
+Common targets are:
+	core-image-openavr
+	core-image-openavr-dev
+
+Common bitbake commands:
+	bitbake core-image-openavr
+	bitbake core-image-openavr-dev
+
+################################
+

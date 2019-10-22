@@ -1,0 +1,20 @@
+#!/bin/bash
+#
+# This script only needs to be sourced once to setup the initial build dir.
+# After that, you just source the oe-init-build-env script directly. Although,
+# it should be safe to always use this script.
+#
+
+export TEMPLATECONF="${PWD}/scripts/conf"
+
+export ENV_SCRIPT="./oe/poky/oe-init-build-env"
+
+if [ -f ${ENV_SCRIPT} ]
+then
+    source ${ENV_SCRIPT} ./build
+else
+    {
+        echo "Can not find ${ENV_SCRIPT} script."
+        echo "Are you in the right directory?"
+    } 1>&2
+fi
