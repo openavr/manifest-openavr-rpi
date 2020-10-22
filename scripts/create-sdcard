@@ -1,0 +1,43 @@
+#!/bin/bash
+
+IMAGE_FILE="${1:-NA}"
+
+declare -a DEVICES
+
+# Find all removable media.
+for i in /sys/block/*
+do
+    if [ $(cat $i/removable) -eq 1 ]; then
+        DEVICES+=( /dev/$(basename $i) )
+    fi
+done
+
+PS3="### Select target device -> "
+select DEV in "${DEVICES[@]}"
+do
+    echo "Selected: ${DEV}"
+
+    if [ -b "${DEV}" ]; then
+        break
+    else
+        echo "Missing block device: ${DEV}"
+    fi
+done
+echo
+
+PS3="### Select target image file -> "
+if [ "${IMAGE_FILE}" = "NA" ]
+then
+    # Search for images...
+    IMAGES=( $(find tmp/deploy/images/*/ -name *.wic.* -type l | grep -v '[.]bmap$') )
+
+    select IMAGE_FILE in "${IMAGES[@]}"
+    do
+        break
+    done
+    echo
+fi
+
+set -x
+
+exec sudo bmaptool copy "${IMAGE_FILE}" "${DEV}"

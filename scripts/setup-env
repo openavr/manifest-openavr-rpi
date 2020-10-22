@@ -12,6 +12,16 @@ export ENV_SCRIPT="./oe/poky/oe-init-build-env"
 if [ -f ${ENV_SCRIPT} ]
 then
     source ${ENV_SCRIPT} ./build
+
+    for newpath in "$(dirname ${BBPATH})/scripts"
+    do
+        # Remove any existences of $newpath from $PATH
+        PATH=$(echo $PATH | sed -re "s#(^|:)$newpath(:|$)#\2#g;s#^:##")
+
+        # Add $newpath to $PATH
+        PATH="$PATH:$newpath"
+    done
+    export PATH
 else
     {
         echo "Can not find ${ENV_SCRIPT} script."
