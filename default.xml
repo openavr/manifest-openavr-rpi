@@ -14,9 +14,9 @@ group are not automatically downloaded by repo.
 
     <project name="manifest-openavr-rpi"  path="."                    remote="openavr"    groups="src"  revision="master" />
 
-    <project name="poky"                  path="oe/poky"              remote="yocto"      groups="oe"   revision="dunfell" />
-    <project name="meta-openembedded"     path="oe/meta-oe"           remote="oe"         groups="oe"   revision="dunfell" />
-    <project name="meta-raspberrypi"      path="oe/meta-raspberrypi"  remote="yocto"      groups="oe"   revision="dunfell" />
+    <project name="poky"                  path="oe/poky"              remote="yocto"      groups="oe"   revision="gatesgarth" />
+    <project name="meta-openembedded"     path="oe/meta-oe"           remote="oe"         groups="oe"   revision="gatesgarth" />
+    <project name="meta-raspberrypi"      path="oe/meta-raspberrypi"  remote="yocto"      groups="oe"   revision="gatesgarth" />
     <project name="meta-openavr"          path="oe/meta-openavr"      remote="openavr"    groups="oe"   revision="master" />
 
 </manifest>
