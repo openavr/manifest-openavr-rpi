@@ -5,13 +5,24 @@
 # it should be safe to always use this script.
 #
 
+unset BUILDDIR
+
+FILENAME="$(basename ${BASH_SOURCE[0]})"
+TGT="${FILENAME#setup-env}"
+BUILDDIR="build${TGT:=-rpi4}"
+
+unset TGT
+unset FILENAME
+
+echo "BUILDDIR = ${BUILDDIR}"
+
 export TEMPLATECONF="${PWD}/scripts/conf"
 
 export ENV_SCRIPT="./oe/poky/oe-init-build-env"
 
 if [ -f ${ENV_SCRIPT} ]
 then
-    source ${ENV_SCRIPT} ./build
+    source ${ENV_SCRIPT} ${BUILDDIR}
 
     for newpath in "$(dirname ${BBPATH})/scripts"
     do
