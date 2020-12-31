@@ -29,7 +29,7 @@ PS3="### Select target image file -> "
 if [ "${IMAGE_FILE}" = "NA" ]
 then
     # Search for images...
-    IMAGES=( $(find tmp/deploy/images/*/ -name *.wic.* -type l | grep -v '[.]bmap$') )
+    IMAGES=( $(find tmp/deploy/images/*/ -name *.wic* -type l | grep -v '[.]bmap$') )
 
     select IMAGE_FILE in "${IMAGES[@]}"
     do
