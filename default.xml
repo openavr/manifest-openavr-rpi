@@ -16,6 +16,8 @@ group are not automatically downloaded by repo.
 
     <project name="poky"                  path="oe/poky"              remote="yocto"      groups="oe"   revision="gatesgarth" />
     <project name="meta-openembedded"     path="oe/meta-oe"           remote="oe"         groups="oe"   revision="gatesgarth" />
+    <project name="meta-arm"              path="oe/meta-arm"          remote="yocto"      groups="oe"   revision="master"  />
+    <project name="meta-ti"               path="oe/meta-ti"           remote="yocto"      groups="oe"   revision="master"  />
     <project name="meta-raspberrypi"      path="oe/meta-raspberrypi"  remote="yocto"      groups="oe"   revision="gatesgarth" />
     <project name="meta-openavr"          path="oe/meta-openavr"      remote="openavr"    groups="oe"   revision="master" />
 
